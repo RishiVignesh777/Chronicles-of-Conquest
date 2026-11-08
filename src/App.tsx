@@ -732,7 +732,11 @@ export default function App() {
   }, [gameState, phase, selectedGeneral, activeScenario, legacyGauge]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-slate-950 font-sans">
+    <div
+      className={`relative w-screen h-screen bg-slate-950 font-sans ${
+        gameState === 'title' ? 'overflow-y-auto' : 'overflow-hidden'
+      }`}
+    >
       {/* 1. TITLE SCREEN */}
       {gameState === 'title' && (
         <TitleScreen onStartGame={initGame} />

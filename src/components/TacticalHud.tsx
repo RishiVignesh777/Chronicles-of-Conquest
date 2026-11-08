@@ -223,33 +223,33 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
       </div>
 
       {/* BOTTOM PERIMETER DOCK */}
-      <div className="w-full flex items-end justify-between gap-4">
+      <div className="w-full flex items-end justify-between gap-2 sm:gap-4 max-h-[38vh]">
         {/* Left: Selected Unit Dossier */}
-        <div className="w-72 pointer-events-auto">
+        <div className="w-60 sm:w-72 shrink-0 pointer-events-auto">
           {selectedUnit ? (
-            <div className="bg-slate-900/95 border border-slate-800 rounded-2xl p-4 shadow-2xl">
-              <div className="flex items-center justify-between mb-2">
-                <div>
-                  <div className="text-xs uppercase font-bold text-slate-400 tracking-wider">
+            <div className="bg-slate-900/95 border border-slate-800 rounded-xl p-2.5 sm:p-3.5 shadow-2xl max-h-[35vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-1">
+                <div className="truncate">
+                  <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
                     {selectedUnit.team === 'player' ? 'Allied Unit' : 'Hostile Unit'}
                   </div>
-                  <div className="text-base font-bold text-white font-serif">{selectedUnit.name}</div>
+                  <div className="text-sm sm:text-base font-bold text-white font-serif truncate">{selectedUnit.name}</div>
                 </div>
-                <span className="text-xs font-bold px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 shrink-0">
                   {selectedUnit.archetype}
                 </span>
               </div>
 
               {/* Health Bar with Ghost / Current */}
-              <div className="mb-3">
-                <div className="flex justify-between text-xs font-mono text-slate-300 mb-1">
+              <div className="mb-2">
+                <div className="flex justify-between text-[11px] font-mono text-slate-300 mb-0.5">
                   <span>HP</span>
                   <span className="tabular-nums font-bold">
                     {selectedUnit.hp} / {selectedUnit.maxHp}
                     {selectedUnit.shieldedHp > 0 && ` (+${selectedUnit.shieldedHp})`}
                   </span>
                 </div>
-                <div className="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                <div className="w-full h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
                   <div
                     className={`h-full transition-all duration-300 ${
                       selectedUnit.hp / selectedUnit.maxHp > 0.5
@@ -264,29 +264,29 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
               </div>
 
               {/* Stats Matrix */}
-              <div className="grid grid-cols-4 gap-1.5 text-center text-xs mb-3">
-                <div className="bg-slate-950/60 p-1.5 rounded-lg border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase">ATK</div>
-                  <div className="font-bold text-amber-300 tabular-nums">{selectedUnit.baseAtk}</div>
+              <div className="grid grid-cols-4 gap-1 text-center text-xs mb-2">
+                <div className="bg-slate-950/60 p-1 rounded border border-slate-800">
+                  <div className="text-[9px] text-slate-400 font-bold uppercase">ATK</div>
+                  <div className="font-bold text-amber-300 tabular-nums text-xs">{selectedUnit.baseAtk}</div>
                 </div>
-                <div className="bg-slate-950/60 p-1.5 rounded-lg border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase">DEF</div>
-                  <div className="font-bold text-sky-300 tabular-nums">{selectedUnit.baseDef}</div>
+                <div className="bg-slate-950/60 p-1 rounded border border-slate-800">
+                  <div className="text-[9px] text-slate-400 font-bold uppercase">DEF</div>
+                  <div className="font-bold text-sky-300 tabular-nums text-xs">{selectedUnit.baseDef}</div>
                 </div>
-                <div className="bg-slate-950/60 p-1.5 rounded-lg border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase">RNG</div>
-                  <div className="font-bold text-slate-200 tabular-nums">{selectedUnit.minRange}-{selectedUnit.maxRange}</div>
+                <div className="bg-slate-950/60 p-1 rounded border border-slate-800">
+                  <div className="text-[9px] text-slate-400 font-bold uppercase">RNG</div>
+                  <div className="font-bold text-slate-200 tabular-nums text-xs">{selectedUnit.minRange}-{selectedUnit.maxRange}</div>
                 </div>
-                <div className="bg-slate-950/60 p-1.5 rounded-lg border border-slate-800">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase">MOV</div>
-                  <div className="font-bold text-slate-200 tabular-nums">{selectedUnit.moveRange}</div>
+                <div className="bg-slate-950/60 p-1 rounded border border-slate-800">
+                  <div className="text-[9px] text-slate-400 font-bold uppercase">MOV</div>
+                  <div className="font-bold text-slate-200 tabular-nums text-xs">{selectedUnit.moveRange}</div>
                 </div>
               </div>
 
               {/* Stance Toggles (if player unit) */}
               {selectedUnit.team === 'player' && (
                 <div>
-                  <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">
+                  <div className="text-[9px] uppercase font-bold text-slate-400 tracking-wider mb-1">
                     Tactical Stance:
                   </div>
                   <div className="grid grid-cols-3 gap-1">
@@ -299,7 +299,7 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
                             sound.playStanceChange();
                             onSetStance(selectedUnit.id, st);
                           }}
-                          className={`py-1 text-[11px] font-bold uppercase rounded-md border transition-all cursor-pointer ${
+                          className={`py-0.5 sm:py-1 text-[10px] font-bold uppercase rounded border transition-all cursor-pointer ${
                             isActive
                               ? st === 'aggressive'
                                 ? 'bg-red-950/60 border-red-500 text-red-200 shadow-[0_0_8px_rgba(239,68,68,0.4)]'
@@ -318,56 +318,56 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
               )}
             </div>
           ) : (
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 text-xs text-slate-400 italic">
+            <div className="bg-slate-900/80 border border-slate-800/80 rounded-xl p-3 text-[11px] text-slate-400 italic">
               Click any allied or enemy unit on the hex grid to inspect stats, aura buffs, and combat forecast.
             </div>
           )}
         </div>
 
         {/* Center: Tactical Cards Hand */}
-        <div className="flex-1 max-w-2xl pointer-events-auto flex justify-center">
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-2.5 shadow-2xl flex items-center gap-2 overflow-x-auto">
+        <div className="flex-1 max-w-xl mx-1 pointer-events-auto flex justify-center">
+          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-2 shadow-2xl flex items-center gap-1.5 overflow-x-auto max-w-full">
             {hand.length === 0 ? (
-              <div className="text-xs text-slate-400 px-6 py-2 italic">
+              <div className="text-xs text-slate-400 px-4 py-2 italic">
                 Tactical hand depleted. Draw more cards at start of turn.
               </div>
             ) : (
-              hand.map(card => {
+              hand.map((card, idx) => {
                 const isSelected = selectedCard?.id === card.id;
                 const canAfford = playerAp >= card.apCost;
                 return (
                   <button
-                    key={card.id}
+                    key={`${card.id}_${idx}`}
                     disabled={!canAfford || !isPlayerTurn}
                     onClick={() => {
                       sound.playClick();
                       onSelectCard(isSelected ? null : card);
                     }}
-                    className={`relative w-36 sm:w-40 p-2.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between h-28 cursor-pointer ${
+                    className={`relative w-28 sm:w-36 p-2 rounded-lg border text-left transition-all duration-200 flex flex-col justify-between h-24 cursor-pointer shrink-0 ${
                       isSelected
-                        ? 'border-cyan-400 bg-cyan-950/60 shadow-[0_0_15px_rgba(34,211,238,0.4)] -translate-y-2'
+                        ? 'border-cyan-400 bg-cyan-950/60 shadow-[0_0_12px_rgba(34,211,238,0.4)] -translate-y-1'
                         : canAfford && isPlayerTurn
-                        ? 'border-slate-800 bg-slate-950/80 hover:border-slate-700 hover:-translate-y-1'
+                        ? 'border-slate-800 bg-slate-950/80 hover:border-slate-700 hover:-translate-y-0.5'
                         : 'border-slate-900 bg-slate-950/40 opacity-50 cursor-not-allowed'
                     }`}
                   >
                     <div>
-                      <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center justify-between mb-0.5">
                         <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider truncate">
                           {card.name}
                         </span>
-                        <span className="w-5 h-5 rounded-full bg-cyan-950 border border-cyan-400 text-cyan-300 font-mono font-bold text-xs flex items-center justify-center">
+                        <span className="w-4 h-4 rounded-full bg-cyan-950 border border-cyan-400 text-cyan-300 font-mono font-bold text-[10px] flex items-center justify-center shrink-0">
                           {card.apCost}
                         </span>
                       </div>
-                      <p className="text-[10px] text-slate-300 line-clamp-2 leading-tight">
+                      <p className="text-[9px] text-slate-300 line-clamp-2 leading-tight">
                         {card.description}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between text-[9px] text-slate-400 uppercase font-mono mt-1">
-                      <span>{card.targetType}</span>
-                      <span className="text-cyan-400 font-bold">{isSelected ? 'ACTIVE' : 'READY'}</span>
+                    <div className="flex items-center justify-between text-[8px] text-slate-400 uppercase font-mono mt-0.5">
+                      <span className="truncate">{card.targetType}</span>
+                      <span className="text-cyan-400 font-bold shrink-0">{isSelected ? 'ACTIVE' : 'READY'}</span>
                     </div>
                   </button>
                 );
@@ -377,55 +377,55 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
         </div>
 
         {/* Right: Combat Forecast Inspection */}
-        <div className="w-72 pointer-events-auto">
+        <div className="w-60 sm:w-72 shrink-0 pointer-events-auto">
           {combatForecast ? (
-            <div className="bg-slate-900/95 border border-red-500/50 rounded-2xl p-3.5 shadow-2xl">
-              <div className="flex items-center justify-between mb-1 text-xs font-bold uppercase tracking-wider text-red-400">
-                <span>⚔ Attack Forecast</span>
+            <div className="bg-slate-900/95 border border-red-500/50 rounded-xl p-2.5 sm:p-3 shadow-2xl max-h-[35vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-0.5 text-[11px] font-bold uppercase tracking-wider text-red-400">
+                <span>⚔ Forecast</span>
                 {combatForecast.isFlank && (
-                  <span className="bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded text-[10px] border border-amber-500/40">
+                  <span className="bg-amber-500/20 text-amber-300 px-1 py-0.5 rounded text-[9px] border border-amber-500/40">
                     FLANK 1.5x
                   </span>
                 )}
               </div>
 
-              <div className="text-xs text-slate-300 mb-2 font-mono">
+              <div className="text-[11px] text-slate-300 mb-1.5 font-mono truncate">
                 {combatForecast.attacker.name} &rarr; {combatForecast.defender.name}
               </div>
 
               {/* Exact Deterministic Math Breakdown */}
-              <div className="bg-slate-950/80 rounded-xl p-2.5 border border-slate-800 text-xs font-mono space-y-1 mb-2">
+              <div className="bg-slate-950/80 rounded-lg p-2 border border-slate-800 text-[10px] font-mono space-y-0.5 mb-1.5">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Dealt Damage:</span>
+                  <span className="text-slate-400">Damage:</span>
                   <span className="font-bold text-red-400 tabular-nums">
                     -{combatForecast.finalDamage} HP
                     {combatForecast.defenderDies && ' (KO)'}
                   </span>
                 </div>
-                <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-400">Elevation Mod:</span>
+                <div className="flex justify-between text-[10px]">
+                  <span className="text-slate-400">Elevation:</span>
                   <span className="text-slate-300 font-bold">
                     {combatForecast.elevationMod > 1 ? '+15% High Ground' : (combatForecast.elevationMod < 1 ? '-15% Uphill' : '1.0x Flat')}
                   </span>
                 </div>
-                <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-400">Counter Attack:</span>
+                <div className="flex justify-between text-[10px]">
+                  <span className="text-slate-400">Counter:</span>
                   <span className={`font-bold ${combatForecast.canCounter ? 'text-amber-400' : 'text-slate-500'}`}>
                     {combatForecast.canCounter
-                      ? `${combatForecast.counterFirst ? '[PREEMPTIVE] ' : ''}-${combatForecast.counterDamage} HP`
-                      : 'None (Out of range)'}
+                      ? `${combatForecast.counterFirst ? '[PRE] ' : ''}-${combatForecast.counterDamage} HP`
+                      : 'None'}
                   </span>
                 </div>
               </div>
 
-              <div className="text-[10px] text-center text-slate-400 italic">
-                Click highlighted target to execute strike
+              <div className="text-[9px] text-center text-slate-400 italic">
+                Click highlighted target to strike
               </div>
             </div>
           ) : (
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 text-xs text-slate-400">
-              <div className="font-bold text-slate-300 mb-1">Tactical Tip:</div>
-              Flanking deals 1.5x damage from the defender's rear or flank. High ground grants +15% damage bonus and extended reach.
+            <div className="bg-slate-900/80 border border-slate-800/80 rounded-xl p-3 text-[11px] text-slate-400">
+              <div className="font-bold text-slate-300 mb-0.5">Tactical Tip:</div>
+              Flanking deals 1.5x damage from rear or side. High ground grants +15% damage bonus.
             </div>
           )}
         </div>
