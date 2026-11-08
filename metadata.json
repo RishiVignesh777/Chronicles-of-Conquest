@@ -1,0 +1,6 @@
+{
+  "name": "Chronicles of Conquest: Echoes of Eternity",
+  "description": "A 2D turn-based hex-grid tactical strategy game featuring historical commanders, dynamic dual-layer power systems, and RPG deckbuilding tactical mechanics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
