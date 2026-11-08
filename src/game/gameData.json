@@ -1,0 +1,550 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "generals": [
+    {
+      "general_id": "gen_alexander",
+      "name": "Alexander the Great",
+      "historical_era": "336 BCE · Hellenistic Antiquity",
+      "tactical_class": "Vanguard Strategist",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1200,
+        "base_defense": 45,
+        "movement_points": 4
+      },
+      "passive_trait": {
+        "trait_name": "Phalanx Momentum",
+        "effect_description": "Frontal charges shatter enemy lines; relentless momentum refunds tactical tempo upon elimination.",
+        "mechanical_modifiers": {
+          "frontal_attack_bonus_pct": 20.0,
+          "ap_refund_on_kill": 1.0,
+          "legacy_gain_on_kill": 10.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Heroic Glory",
+        "radius_hexes": 2,
+        "effect_description": "Inspires adjacent phalanxes with relentless discipline, speed, and assault capability.",
+        "buffs": {
+          "attack_bonus_pct": 15.0,
+          "defense_bonus_pct": 10.0,
+          "movement_points_bonus": 1.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Conquest of Babylon",
+        "duration_turns": 3,
+        "global_effect_description": "The invincible Macedonian phalanx breaks all boundaries of warfare; allies ignore Zone of Control.",
+        "map_alterations": "Allied army gains +35% attack power; Zone of Control penalties removed map-wide; Ley-Nodes yield double AP."
+      }
+    },
+    {
+      "general_id": "gen_suntzu",
+      "name": "Sun Tzu",
+      "historical_era": "512 BCE · Spring and Autumn Period",
+      "tactical_class": "Grand Mastermind",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1050,
+        "base_defense": 40,
+        "movement_points": 3
+      },
+      "passive_trait": {
+        "trait_name": "Formless Art",
+        "effect_description": "Strike where the enemy is unprepared; exploit structural vulnerabilities with devastating flanking strikes.",
+        "mechanical_modifiers": {
+          "flank_damage_multiplier": 2.0,
+          "frontal_incoming_damage_reduction_pct": 25.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Subtle Whispers",
+        "radius_hexes": 2,
+        "effect_description": "Cloaks friendly maneuvering in mist and misdirection, ignoring terrain penalties in forests.",
+        "buffs": {
+          "attack_bonus_pct": 10.0,
+          "defense_bonus_pct": 20.0,
+          "forest_movement_penalty_reduction_pct": 100.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "The Art of War",
+        "duration_turns": 3,
+        "global_effect_description": "Warps battlefield perceptions so that darkness falls on enemies and terrain defenses invert.",
+        "map_alterations": "Enemy vision range reduced to 1 hex; flanking damage multiplier raised to 2.2x; enemy terrain cover bonuses inverted."
+      }
+    },
+    {
+      "general_id": "gen_joan",
+      "name": "Joan of Arc",
+      "historical_era": "1429 CE · Hundred Years' War",
+      "tactical_class": "Holy Paragon",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1300,
+        "base_defense": 50,
+        "movement_points": 3
+      },
+      "passive_trait": {
+        "trait_name": "Martyr's Resolve",
+        "effect_description": "Faith turns adversity into divine miracles; suffering rallies the vanguard with instant AP and Legacy.",
+        "mechanical_modifiers": {
+          "ap_on_friendly_casualty": 2.0,
+          "legacy_on_friendly_casualty": 15.0,
+          "critical_hp_defense_bonus_pct": 30.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Sanctified Aegis",
+        "radius_hexes": 2,
+        "effect_description": "A radiant halo protects believers from harm and elemental burning or shock hazards.",
+        "buffs": {
+          "attack_bonus_pct": 10.0,
+          "defense_bonus_pct": 25.0,
+          "elemental_hazard_immunity": 1.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Fires of Orléans",
+        "duration_turns": 3,
+        "global_effect_description": "Divine light purges all negative status conditions and consecrates the battlefield with holy healing fire.",
+        "map_alterations": "Allied units regenerate 12 HP per turn; all Ley-Nodes pulse 10 holy damage to adjacent enemies; debuffs cleansed."
+      }
+    },
+    {
+      "general_id": "gen_genghis",
+      "name": "Genghis Khan",
+      "historical_era": "1206 CE · Mongol Empire",
+      "tactical_class": "Mounted Marauder",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1150,
+        "base_defense": 42,
+        "movement_points": 5
+      },
+      "passive_trait": {
+        "trait_name": "Nomadic Feigned Retreat",
+        "effect_description": "Hit-and-run horse archery decimates rigid formations; mounted units strike with extreme velocity on open terrain.",
+        "mechanical_modifiers": {
+          "plains_damage_bonus_pct": 25.0,
+          "post_attack_retreat_hexes": 2.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Steppe Gale",
+        "radius_hexes": 2,
+        "effect_description": "The terrifying drumbeat of thousands of hooves echoes across the earth, extending movement and archery reach.",
+        "buffs": {
+          "attack_bonus_pct": 20.0,
+          "movement_points_bonus": 1.0,
+          "ranged_attack_range_bonus": 1.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Wrath of the Horde",
+        "duration_turns": 3,
+        "global_effect_description": "A tempest of cavalry sweeps across the map; all units gain nomadic hit-and-run mobility.",
+        "map_alterations": "All friendly units gain +40% attack on Plains, ignore Zone of Control, and receive +1 attack range."
+      }
+    },
+    {
+      "general_id": "gen_napoleon",
+      "name": "Napoleon Bonaparte",
+      "historical_era": "1805 CE · Napoleonic Era",
+      "tactical_class": "Artillery Architect",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1100,
+        "base_defense": 44,
+        "movement_points": 3
+      },
+      "passive_trait": {
+        "trait_name": "Ballistic Geometry",
+        "effect_description": "Calculated artillery crossfire pierces fortified redoubts and exploits downhill vantage points.",
+        "mechanical_modifiers": {
+          "downhill_attack_bonus_pct": 30.0,
+          "enemy_terrain_defense_pierce_pct": 50.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Grand Battery Command",
+        "radius_hexes": 2,
+        "effect_description": "Massed artillery coordinates devastating crossfires, granting armor penetration and increased lethality.",
+        "buffs": {
+          "attack_bonus_pct": 25.0,
+          "defense_bonus_pct": 10.0,
+          "ranged_splash_damage_pct": 25.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Sun of Austerlitz",
+        "duration_turns": 3,
+        "global_effect_description": "Massed batteries bombard the entire battlefield, devastating entrenched defenders and clearing forest covers.",
+        "map_alterations": "Incendiary artillery strikes impact 3 random hostile hexes each round; allied ranged units gain +1 range and +30% attack."
+      }
+    },
+    {
+      "general_id": "gen_caesar",
+      "name": "Julius Caesar",
+      "historical_era": "49 BCE · Late Roman Republic",
+      "tactical_class": "Vanguard Strategist",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1250,
+        "base_defense": 48,
+        "movement_points": 4
+      },
+      "passive_trait": {
+        "trait_name": "Veni, Vidi, Vici",
+        "effect_description": "Rapid operational tempo shatters enemy defensive cohesion upon closing distance.",
+        "mechanical_modifiers": {
+          "charge_attack_bonus_pct": 20.0,
+          "flanked_target_armor_shred_pct": 30.0,
+          "ap_refund_on_kill": 1.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Aura of the Imperator",
+        "radius_hexes": 2,
+        "effect_description": "Inspires unbreakable Roman cohort cohesion, fortified counter-measures, and relentless march tempo.",
+        "buffs": {
+          "attack_bonus_pct": 15.0,
+          "defense_bonus_pct": 20.0,
+          "movement_points_bonus": 1.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "The Die Is Cast (Alea Iacta Est)",
+        "duration_turns": 3,
+        "global_effect_description": "The Rubicon is crossed: all allied legionaries gain fortified counter-attacks and immune to flanking.",
+        "map_alterations": "Allied infantry gain +50% counter-attack damage and immunity to flanking multipliers; Zone of Control is ignored."
+      }
+    },
+    {
+      "general_id": "gen_saladin",
+      "name": "Saladin",
+      "historical_era": "1187 CE · Ayyubid Sultanate",
+      "tactical_class": "Holy Paragon",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1220,
+        "base_defense": 46,
+        "movement_points": 3
+      },
+      "passive_trait": {
+        "trait_name": "Chivalric Zeal & Desert Resilience",
+        "effect_description": "Unflinching moral authority sustains warriors through grueling engagements across arid terrain.",
+        "mechanical_modifiers": {
+          "ley_node_hp_regeneration": 8.0,
+          "arid_movement_penalty_reduction_pct": 100.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Crescent Aegis",
+        "radius_hexes": 2,
+        "effect_description": "A radiant barrier of righteousness blunts enemy cavalry momentum and missile barrages.",
+        "buffs": {
+          "attack_bonus_pct": 10.0,
+          "defense_bonus_pct": 25.0,
+          "ranged_damage_reduction_pct": 30.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Horns of Hattin",
+        "duration_turns": 3,
+        "global_effect_description": "The burning desert winds parch hostile ranks while rallying faithful vanguard cohorts.",
+        "map_alterations": "Hostile stance changes and ability AP costs increased by +1; friendly Ley-Nodes radiate 12 HP heal to allies and 10 true damage to enemies."
+      }
+    },
+    {
+      "general_id": "gen_nobunaga",
+      "name": "Oda Nobunaga",
+      "historical_era": "1575 CE · Sengoku Jidai",
+      "tactical_class": "Artillery Architect",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1120,
+        "base_defense": 42,
+        "movement_points": 3
+      },
+      "passive_trait": {
+        "trait_name": "Three-Volley Ashigaru Salvo",
+        "effect_description": "Continuous rolling matchlock fire pierces through the heaviest samurai armor with automatic retaliation.",
+        "mechanical_modifiers": {
+          "armor_piercing_bonus_pct": 30.0,
+          "range_counter_distance": 2.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Iron Hand of Owari",
+        "radius_hexes": 2,
+        "effect_description": "Disciplined volley-fire doctrine establishes lethal kill zones for ranged detachments.",
+        "buffs": {
+          "attack_bonus_pct": 20.0,
+          "defense_bonus_pct": 10.0,
+          "ranged_attack_range_bonus": 1.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Tenka Fubu (All Under Heaven)",
+        "duration_turns": 3,
+        "global_effect_description": "A storm of volley fire and incendiary smoke envelops the battlefield; hostile cavalry lose charge bonuses.",
+        "map_alterations": "Enemy cavalry charge bonuses nullified; allied ranged units ignore forest line-of-sight penalties and ignite target hexes."
+      }
+    },
+    {
+      "general_id": "gen_tomyris",
+      "name": "Queen Tomyris",
+      "historical_era": "530 BCE · Iron Age Steppe",
+      "tactical_class": "Mounted Marauder",
+      "stats": {
+        "command_radius": 2,
+        "base_hp": 1180,
+        "base_defense": 40,
+        "movement_points": 5
+      },
+      "passive_trait": {
+        "trait_name": "Blood-Drenched Vengeance",
+        "effect_description": "Every fallen ally fuels a ferocious surge of retaliatory wrath across all mounted regiments.",
+        "mechanical_modifiers": {
+          "stacking_atk_per_casualty_pct": 15.0,
+          "hp_drain_on_kill": 10.0
+        }
+      },
+      "commander_aura": {
+        "aura_name": "Massagetae Vigor",
+        "radius_hexes": 2,
+        "effect_description": "The terrifying nomadic charge breaks formations without pausing for Zone of Control.",
+        "buffs": {
+          "attack_bonus_pct": 20.0,
+          "movement_points_bonus": 1.0,
+          "zone_of_control_immunity": 1.0
+        }
+      },
+      "legacy_domain": {
+        "domain_name": "Gorged on Blood (Sack of Cyrus)",
+        "duration_turns": 3,
+        "global_effect_description": "Tomyris drowns the battlefield in righteous vengeance: all friendly units execute double-strikes on flanked targets.",
+        "map_alterations": "All friendly units execute double strikes on flanked/rear targets; eliminating an enemy commander permanently lowers hostile defense by 25%."
+      }
+    }
+  ],
+  "units": [
+    {
+      "unit_type_id": "unit_light_infantry",
+      "unit_name": "Light Infantry",
+      "role": "Frontline Skirmisher & Flanker",
+      "combat_stats": {
+        "hp": 35,
+        "armor": 8,
+        "attack_power": 20,
+        "attack_range": 1,
+        "movement_points": 3,
+        "ap_cost": 1
+      },
+      "counters": [
+        {
+          "target_unit_type": "Longbowman",
+          "damage_multiplier": 1.25
+        },
+        {
+          "target_unit_type": "Scout",
+          "damage_multiplier": 1.35
+        },
+        {
+          "target_unit_type": "Heavy Cavalry",
+          "damage_multiplier": 0.65
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_heavy_shield_bearer",
+      "unit_name": "Heavy Shield-Bearer",
+      "role": "Entrenched Line-Holder & Objective Anchor",
+      "combat_stats": {
+        "hp": 55,
+        "armor": 18,
+        "attack_power": 18,
+        "attack_range": 1,
+        "movement_points": 2,
+        "ap_cost": 2
+      },
+      "counters": [
+        {
+          "target_unit_type": "Light Infantry",
+          "damage_multiplier": 1.20
+        },
+        {
+          "target_unit_type": "Horse Archer",
+          "damage_multiplier": 1.30
+        },
+        {
+          "target_unit_type": "Catapult",
+          "damage_multiplier": 0.50
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_pikeman",
+      "unit_name": "Pikeman",
+      "role": "Anti-Cavalry Line Infantry",
+      "combat_stats": {
+        "hp": 45,
+        "armor": 12,
+        "attack_power": 22,
+        "attack_range": 1,
+        "movement_points": 2,
+        "ap_cost": 2
+      },
+      "counters": [
+        {
+          "target_unit_type": "Heavy Cavalry",
+          "damage_multiplier": 1.75
+        },
+        {
+          "target_unit_type": "Horse Archer",
+          "damage_multiplier": 1.40
+        },
+        {
+          "target_unit_type": "Longbowman",
+          "damage_multiplier": 0.75
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_longbowman",
+      "unit_name": "Longbowman",
+      "role": "Long-Range Fire Support & Elevation Harasser",
+      "combat_stats": {
+        "hp": 30,
+        "armor": 6,
+        "attack_power": 22,
+        "attack_range": 3,
+        "movement_points": 2,
+        "ap_cost": 2
+      },
+      "counters": [
+        {
+          "target_unit_type": "Pikeman",
+          "damage_multiplier": 1.35
+        },
+        {
+          "target_unit_type": "Light Infantry",
+          "damage_multiplier": 1.30
+        },
+        {
+          "target_unit_type": "Heavy Shield-Bearer",
+          "damage_multiplier": 0.60
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_heavy_cavalry",
+      "unit_name": "Heavy Cavalry",
+      "role": "Shock Vanguard & Flank Destroyer",
+      "combat_stats": {
+        "hp": 48,
+        "armor": 14,
+        "attack_power": 28,
+        "attack_range": 1,
+        "movement_points": 4,
+        "ap_cost": 3
+      },
+      "counters": [
+        {
+          "target_unit_type": "Light Infantry",
+          "damage_multiplier": 1.50
+        },
+        {
+          "target_unit_type": "Longbowman",
+          "damage_multiplier": 1.60
+        },
+        {
+          "target_unit_type": "Pikeman",
+          "damage_multiplier": 0.50
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_horse_archer",
+      "unit_name": "Horse Archer",
+      "role": "Hit-and-Run Skirmisher & Outflanker",
+      "combat_stats": {
+        "hp": 32,
+        "armor": 7,
+        "attack_power": 18,
+        "attack_range": 2,
+        "movement_points": 4,
+        "ap_cost": 2
+      },
+      "counters": [
+        {
+          "target_unit_type": "Pikeman",
+          "damage_multiplier": 1.30
+        },
+        {
+          "target_unit_type": "Scout",
+          "damage_multiplier": 1.25
+        },
+        {
+          "target_unit_type": "Heavy Shield-Bearer",
+          "damage_multiplier": 0.70
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_catapult",
+      "unit_name": "Catapult",
+      "role": "Siege Engine & Area Denial Bombardment",
+      "combat_stats": {
+        "hp": 40,
+        "armor": 10,
+        "attack_power": 36,
+        "attack_range": 4,
+        "movement_points": 1,
+        "ap_cost": 3
+      },
+      "counters": [
+        {
+          "target_unit_type": "Heavy Shield-Bearer",
+          "damage_multiplier": 2.00
+        },
+        {
+          "target_unit_type": "Pikeman",
+          "damage_multiplier": 1.40
+        },
+        {
+          "target_unit_type": "Heavy Cavalry",
+          "damage_multiplier": 0.50
+        }
+      ]
+    },
+    {
+      "unit_type_id": "unit_scout",
+      "unit_name": "Scout",
+      "role": "Rapid Reconnaissance & Ley-Node Seizer",
+      "combat_stats": {
+        "hp": 28,
+        "armor": 5,
+        "attack_power": 14,
+        "attack_range": 1,
+        "movement_points": 5,
+        "ap_cost": 1
+      },
+      "counters": [
+        {
+          "target_unit_type": "Catapult",
+          "damage_multiplier": 1.40
+        },
+        {
+          "target_unit_type": "Light Infantry",
+          "damage_multiplier": 0.70
+        },
+        {
+          "target_unit_type": "Heavy Cavalry",
+          "damage_multiplier": 0.50
+        }
+      ]
+    }
+  ]
+}
