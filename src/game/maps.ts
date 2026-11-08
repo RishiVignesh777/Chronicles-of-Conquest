@@ -165,6 +165,50 @@ export const SCENARIOS: ScenarioMap[] = [
     ],
     leyNodes: [{ q: 0, r: 0 }],
   },
+  {
+    id: 'cannae',
+    name: 'The Battle of Cannae',
+    subtitle: 'Double Envelopment & Crescent Inversion',
+    description: 'Hannibal Barca faces the massive consular legions of Gaius Terentius Varro alongside the River Aufidus.',
+    weather: 'clear',
+    radius: 4,
+    tiles: createHexGrid(4, (q, r) => {
+      // River Aufidus on one flank
+      if (r === -4 || (r === -3 && q >= 0)) {
+        return { terrain: 'water', elevation: 0 };
+      }
+      // Ancient Hill of Cannae & Roman granary ruins
+      if (q === 0 && r === 2) {
+        return { terrain: 'leynode', elevation: 2 };
+      }
+      // Southern ridge
+      if (r === 3 && Math.abs(q) <= 2) {
+        return { terrain: 'mountain', elevation: 2 };
+      }
+      // Olive groves / scrub forests
+      if ((q === -2 && r === 1) || (q === 2 && r === -1)) {
+        return { terrain: 'forest', elevation: 1 };
+      }
+      return { terrain: 'plains', elevation: Math.abs(q) <= 1 ? 1 : 0 };
+    }),
+    playerSpawnHexes: [
+      { archetype: 'Commander', name: 'Hannibal Barca', hex: { q: -2, r: 0 }, facing: 0 },
+      { archetype: 'Infantry', name: 'Iberian Veterans', hex: { q: -1, r: -1 }, facing: 0 },
+      { archetype: 'Infantry', name: 'Celtic Vanguard', hex: { q: -1, r: 1 }, facing: 0 },
+      { archetype: 'Cavalry', name: 'Numidian Light Cavalry', hex: { q: -3, r: 2 }, facing: 0 },
+      { archetype: 'Cavalry', name: 'Hasdrubal Heavy Cavalry', hex: { q: -3, r: -2 }, facing: 0 },
+      { archetype: 'Archer', name: 'Balearic Slingers', hex: { q: -3, r: 0 }, facing: 0 },
+    ],
+    enemySpawnHexes: [
+      { archetype: 'Commander', name: 'Consul Varro', hex: { q: 3, r: 0 }, facing: 3 },
+      { archetype: 'Infantry', name: 'Consular Legion I', hex: { q: 1, r: -1 }, facing: 3 },
+      { archetype: 'Infantry', name: 'Consular Legion II', hex: { q: 1, r: 0 }, facing: 3 },
+      { archetype: 'Infantry', name: 'Consular Legion III', hex: { q: 1, r: 1 }, facing: 3 },
+      { archetype: 'Cavalry', name: 'Roman Equites', hex: { q: 2, r: -2 }, facing: 3 },
+      { archetype: 'Archer', name: 'Velites Skirmishers', hex: { q: 2, r: 1 }, facing: 3 },
+    ],
+    leyNodes: [{ q: 0, r: 2 }],
+  },
 ];
 
 export function createInitialUnits(
