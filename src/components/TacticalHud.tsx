@@ -66,11 +66,14 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
   const canActivateDomain = isPlayerTurn && legacyGauge >= 100 && (!activeDomain || activeDomain.team !== 'player');
 
   return (
-    <div className="fixed inset-0 pointer-events-none flex flex-col justify-between p-3 sm:p-5 select-none text-slate-100 font-sans z-20">
+    <div
+      data-testid="tactical-hud"
+      className="fixed inset-0 pointer-events-none flex flex-col justify-between gap-3 overflow-y-auto max-h-[80vh] p-3 sm:p-5 select-none text-slate-100 font-sans z-20"
+    >
       {/* TOP PERIMETER CLUSTER */}
-      <div className="w-full flex items-start justify-between gap-4">
+      <div className="w-full shrink-0 flex flex-wrap items-start justify-between gap-2 sm:gap-4">
         {/* Left: General & Power Gauges (AP + Legacy Echoes) */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {/* General Crest & Name */}
           <div className="pointer-events-auto bg-slate-900/90 border border-slate-800 rounded-xl px-3.5 py-2 shadow-lg flex items-center gap-3">
             <div
@@ -223,11 +226,11 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
       </div>
 
       {/* BOTTOM PERIMETER DOCK */}
-      <div className="w-full flex items-end justify-between gap-2 sm:gap-4 max-h-[38vh]">
+      <div className="w-full shrink-0 flex flex-col md:flex-row items-stretch md:items-end justify-between gap-2 sm:gap-4">
         {/* Left: Selected Unit Dossier */}
-        <div className="w-60 sm:w-72 shrink-0 pointer-events-auto">
+        <div className="w-full md:w-60 lg:w-72 shrink-0 pointer-events-auto">
           {selectedUnit ? (
-            <div className="bg-slate-900/95 border border-slate-800 rounded-xl p-2.5 sm:p-3.5 shadow-2xl max-h-[35vh] overflow-y-auto">
+            <div className="bg-slate-900/95 border border-slate-800 rounded-xl p-2.5 sm:p-3.5 shadow-2xl">
               <div className="flex items-center justify-between mb-1">
                 <div className="truncate">
                   <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
@@ -325,7 +328,7 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
         </div>
 
         {/* Center: Tactical Cards Hand */}
-        <div className="flex-1 max-w-xl mx-1 pointer-events-auto flex justify-center">
+        <div className="w-full md:flex-1 md:max-w-xl md:mx-1 pointer-events-auto flex justify-center">
           <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-2 shadow-2xl flex items-center gap-1.5 overflow-x-auto max-w-full">
             {hand.length === 0 ? (
               <div className="text-xs text-slate-400 px-4 py-2 italic">
@@ -377,9 +380,9 @@ export const TacticalHud: React.FC<TacticalHudProps> = ({
         </div>
 
         {/* Right: Combat Forecast Inspection */}
-        <div className="w-60 sm:w-72 shrink-0 pointer-events-auto">
+        <div className="w-full md:w-60 lg:w-72 shrink-0 pointer-events-auto">
           {combatForecast ? (
-            <div className="bg-slate-900/95 border border-red-500/50 rounded-xl p-2.5 sm:p-3 shadow-2xl max-h-[35vh] overflow-y-auto">
+            <div className="bg-slate-900/95 border border-red-500/50 rounded-xl p-2.5 sm:p-3 shadow-2xl">
               <div className="flex items-center justify-between mb-0.5 text-[11px] font-bold uppercase tracking-wider text-red-400">
                 <span>⚔ Forecast</span>
                 {combatForecast.isFlank && (
